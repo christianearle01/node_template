@@ -1,11 +1,16 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="/">Shopee</a>
-  
-    <div class="collapse navbar-collapse">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="/">Home</a>
-        </li>
-      </ul>
+    <div class="container-fluid">
+        <a class="navbar-brand ms-4 d-inline-block align-middle" href="/">Lazaga</a>
+
+        <div class="collapse navbar-collapse mr-auto">
+            <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link text-success <%= page === 'home' ? 'fw-bold' : '' %>" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-success <%= page === 'cart' ? 'fw-bold' : '' %>" href="/carts">Cart</a>
+            </li>
+            </ul>
+        </div>
     </div>
-  </nav>
+</nav>

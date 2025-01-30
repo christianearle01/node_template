@@ -5,29 +5,58 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Homepage</title>
 		<link rel="stylesheet" href="/vendors/css/bootstrap.css">
+		<link rel="stylesheet" href="/customs/css/index.css">
 		<script src="/vendors/js/jquery.js"></script>
 		<script src="/vendors/js/bootstrap.bundle.min.js"></script>
 		<script src="/customs/js/index.js"></script>
 </head>
 <body>
-		<%- include("partials/header") %>
-		<h1 class="text-primary text-center my-4" data-bs-toggle="modal" data-bs-target="#show-image-modal">Homepage</h1>
+	<%- include("partials/header") %>
 
-		<div class="modal fade" id="show-image-modal" tabindex="-1" aria-labelledby="modal-title" aria-hidden="true">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="modal-title"></h5>
-						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+	<div id="products-container" class="container">
+		<h1 class="text-success my-4">Homepage</h1>
+		<div class="row g-4">
+			<% products.forEach(product => { %>
+				<form action="/products/add-to-cart" method="POST" class="add-to-cart-form col">
+					<div class="col btn-outline-success">
+						<div class="card h-100">
+							<img src="/images/<%= product.image_path %>" class="card-img-top img-fluid product-image" alt="<%= product.name %>" style="height: 200px; object-fit: cover;" data-bs-toggle="modal" data-bs-target="#show-image-modal">
+							<div class="card-body">
+								<h6 class="card-title text-truncate" style="font-size: 0.85rem;"><%= product.name %></h6>
+								<p class="card-text text-muted mb-2" style="font-size: 0.75rem; height: 60px; overflow: hidden; text-overflow: ellipsis;"><%= product.description %></p>
+								<p class="card-text text-success fw-bold mb-2" style="font-size: 0.9rem;">₱<%= product.price %></p>
+	
+								<div class="d-flex align-items-center justify-content-between">
+									<div class="d-flex align-items-center">
+										<button type="button" class="decrease-qty-btn btn btn-outline-secondary btn-sm rounded-start-pill btn-success text-white">-</button>
+										<input type="number" name="quantity" value="1" min="1" class="form-control form-control-sm mx-1 bg-white quantity-field" style="width: 40px;">
+										<button type="button" class="increase-qty-btn btn btn-outline-secondary btn-sm rounded-end-pill btn-success text-white">+</button>
+									</div>
+									<button type="submit" class="btn btn-success btn-sm">Add</button>
+								</div>
+	
+								<input type="hidden" name="product_id" value="<%= product.id %>">
+							</div>
+						</div>
 					</div>
-					<div class="modal-body container">
-						<img class="w-100" id="modal-image" src="" alt="" style="height: 300px; object-fit: cover;">
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-					</div>
+				</form>
+			<% }) %>
+		</div>
+	</div>
+
+	<!-- Focus Clicked Product Image Modal -->
+	<div class="modal fade" id="show-image-modal" tabindex="-1" aria-labelledby="modal-title" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="modal-title"></h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<img class="w-100" id="modal-image" src="" alt="" style="height: 400px; object-fit: cover;">
 				</div>
 			</div>
 		</div>
+	</div>
 </body>
 </html>

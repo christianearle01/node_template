@@ -83,5 +83,7 @@ Now, your application should be up and running!
 Google drive link
 https://drive.google.com/drive/folders/1V9d79rhvo75Ale-assgAuOpItYGZ3X8l?usp=sharing
 
+ce: https://drive.google.com/drive/folders/1gXWOSwOrF_99wq1SdNYqh2PNj7sNGU_6
+
 Installers
 https://drive.google.com/file/d/1KbDxHa3bDhQZvIsNecw3MUkA5eyqAJ5i/view?usp=drivesdk
